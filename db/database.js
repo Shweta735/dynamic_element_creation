@@ -17,7 +17,7 @@ const createClientPool = ()=>{
       user: "qjyggqzkzlozfq",
       host: "ec2-18-204-101-137.compute-1.amazonaws.com",
       database: "d60f31kijusadv",
-      password: '540a77ea30f4b23005c6583d9db7d22f9923753e453eed57fce586a37483230e',
+      password: "540a77ea30f4b23005c6583d9db7d22f9923753e453eed57fce586a37483230e",
       port: "5432"
     });
   }
