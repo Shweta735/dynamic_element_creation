@@ -17,6 +17,8 @@ I have kept the front end quite simple. It does the basic job of taking input fr
    ### docker-compose -f docker-compose-db.yml -f docker-compose.yml up -d
  
    The above command will bring up the containers. You can check using docker ps command
+   
+   If the application container is not up, run npm install.
  
    Run below command to stop the containers
  
