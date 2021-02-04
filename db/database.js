@@ -13,7 +13,7 @@ const createClientPool = ()=>{
       port: "5432"
     });
   } else {
-    companyPool = new Client({
+    companyPool = new Pool({
       user: "qjyggqzkzlozfq",
       host: "ec2-18-204-101-137.compute-1.amazonaws.com",
       database: "d60f31kijusadv",
