@@ -14,10 +14,10 @@ const createClientPool = ()=>{
     });
   } else {
     companyPool = new Pool({
-      user: "qjyggqzkzlozfq",
-      host: "ec2-18-204-101-137.compute-1.amazonaws.com",
-      database: "d60f31kijusadv",
-      password: "540a77ea30f4b23005c6583d9db7d22f9923753e453eed57fce586a37483230e",
+      user: "qlsrssesdjutxw",
+      host: "ec2-52-204-232-46.compute-1.amazonaws.com",
+      database: "d92tole5gntqj",
+      password: '2c94d6e8f133076bb52a705c6b7796d090b755949420fae63cef473d9012f92d',
       port: "5432"
     });
   }
