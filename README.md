@@ -1,6 +1,8 @@
 # dynamic_element_creation
 
-This is a dynmaic element/form creation web application where you can provide the type , value and the attributes of the element and it will be created dynamically for you. You can change the attributes of the element also and see the changes in front of your eyes
+This is a dynmaic element/form creation web application where you can provide the type , value and the attributes of the element and it will be created dynamically for you. You can change the attributes of the element also and see the changes in front of your eyes.
+
+I have kept the front end quite simple. It does the basic job of taking input from the user and showing the output. For backend I have used express framework in nodejs and postgresql as the database
 
 ## Pull the docker image from docker hub
   
