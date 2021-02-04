@@ -1,32 +1,42 @@
 const db = require('../db/database'); 
 const Element = require("../db/database");
-const attribute = {};
+const element = {};
 
-attribute.createAttribute = async (req, res) => {
+element.createElement = async (req, res) => {
   const { type, value } = req.body;
   let { attributes, attval } = req.body;
-  attributes = attributes.includes(',') ? attributes.split(',') : [attributes];
-  attval = attval.includes(',') ? attval.split(',') : [attval];
+  if(!type || !value){
+    return res.status(400).send('Element type and value are mandatory')
+  }
+  attributes = attributes ? attributes.includes(',') ? attributes.split(',') : [attributes] : [];
+  attval = attval ? attval.includes(',') ? attval.split(',') : [attval] : [];
   if(attval.length !== attributes.length){
-    return res.status(400).send('Attribute and value doesnot match')
+    return res.status(400).send('Attribute and value do not match')
   }
   const attribute = {};
-  for(let i=0;i<attributes.length;i++){
-    const att = attributes[i];
-    attribute[attributes[i]] = attval[i];
+  if(attributes.length){
+    for(let i=0;i<attributes.length;i++){
+      const att = attributes[i];
+      attribute[attributes[i]] = attval[i];
+    }
+    const result = await db.insertElement([type, value, { attribute }])
+    return res.status(200).send((result.rows[0].id).toString());
   }
-  const result = await db.insertElement([type, value, { attribute }])
+  const result = await db.insertElement([type, value, {}])
   return res.status(200).send((result.rows[0].id).toString());
 };
 
-attribute.editAttribute = async (req, res) => {
+element.editElement = async (req, res) => {
   const { id } = req.params;
+  if(!id){
+    return res.status(400).send('Missing element id')
+  }
   const { type, value } = req.body;
   let { attributes, attval } = req.body;
   attributes = attributes.includes(',') ? attributes.split(',') : [attributes];
   attval = attval.includes(',') ? attval.split(',') : [attval];
   if(attval.length !== attributes.length){
-    return res.status(400).send('Attribute and value doesnot match')
+    return res.status(400).send('Attribute and value do not match')
   }
   const attribute = {};
   for(let i=0;i<attributes.length;i++){
@@ -39,8 +49,11 @@ attribute.editAttribute = async (req, res) => {
   return res.status(200).send('Attributes updated')
 };
 
-attribute.getAttribute = async(req,res)=>{
+element.getElement = async(req,res)=>{
   const { id } = req.params;
+  if(!id){
+    return res.status(400).send('Missing element id')
+  }
   const result = await db.getElement([id])
   if(!result.rowCount){
     return res.status(400).send('No data found')
@@ -61,4 +74,4 @@ attribute.getAttribute = async(req,res)=>{
   });
 }
 
-module.exports.attribute = attribute;
+module.exports.element = element;

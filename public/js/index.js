@@ -56,7 +56,7 @@ function dynamicForm(name,template){
     const formData = $("#dynamicelement").serialize();
     $.ajax({
       type : 'POST',
-      url : 'api/v1/attribute/property',
+      url : 'api/v1/element/property',
       data : formData,
       success:function(data) {
        sessionStorage.setItem('elementId',data)
@@ -65,9 +65,10 @@ function dynamicForm(name,template){
        const value = serializedData[1].value;
        let attributes = serializedData[2].value;
        let attval = serializedData[3].value;
-       attributes = attributes.includes(',') ? attributes.split(',') : [attributes];
-       attval = attval.includes(',') ? attval.split(',') : [attval];
+       attributes = attributes ? attributes.includes(',') ? attributes.split(',') : [attributes] : [];
+       attval = attval ? attval.includes(',') ? attval.split(',') : [attval] : [];
        templateId = document.getElementById(template);
+       templateType && templateId ? templateId.removeChild(templateType) : '';
        templateType = document.createElement(type); 
        templateType.appendChild(document.createTextNode(value)); 
        for(let i= 0;i<attributes.length;i++){ 
@@ -89,15 +90,14 @@ function dynamicForm(name,template){
   })
 }
 
-function GFG_Fun(dynamicFormId) { 
+function updateDynamicElement(dynamicFormId) { 
     const elementId = sessionStorage.getItem('elementId');
     $.ajax({
       type : 'GET',
-      url : `api/v1/attribute/property/${elementId}`,
+      url : `api/v1/element/property/${elementId}`,
       success:function(data) {
         const { attributeKeys, attributeValues, value , type } = data;
         const formId = document.getElementById(dynamicFormId); 
-        // formId.innerHtml = '';
         const br = document.createElement("br"); 
         const form = document.createElement("form"); 
         form.setAttribute('id','temp'); 
@@ -105,20 +105,22 @@ function GFG_Fun(dynamicFormId) {
         const elementValue = document.createElement("input"); 
         elementValue.setAttribute("type", "text");
         elementValue.setAttribute("name", "value");  
-        elementValue.setAttribute('size', '50')
+        elementValue.setAttribute('size', '70')
         elementValue.setAttribute('value', value); 
 
         const attributes = document.createElement("input"); 
         attributes.setAttribute("type", "text"); 
         attributes.setAttribute("name", "attributes"); 
-        attributes.setAttribute('size', '50')
-        attributes.setAttribute('value', attributeKeys.join(',')); 
+        attributes.setAttribute('size', '70')
+        attributeKeys.length ? attributes.setAttribute('value', attributeKeys.join(',')) :
+          attributes.setAttribute('placeholder', 'Provide attributes separated by comma like name,id,size') ; 
   
         const attributeValue = document.createElement("input"); 
         attributeValue.setAttribute("type", "text"); 
         attributeValue.setAttribute("name", "attval"); 
-        attributeValue.setAttribute('size', '50')
-        attributeValue.setAttribute('value', attributeValues.join(','));  
+        attributeValue.setAttribute('size', '70')
+        attributeValues.length ? attributeValue.setAttribute('value', attributeValues.join(',')) :
+           attributeValue.setAttribute('placeholder', "Provide values corresponding to attributes above separated by comma like name,id,size");
 
         const button = document.createElement("input");
         button.setAttribute('type','button');
@@ -141,15 +143,15 @@ function GFG_Fun(dynamicFormId) {
         $('#temp').on('click','#submit',function(){
           $.ajax({
             type : 'PUT',
-            url : `api/v1/attribute/property/${elementId}`,
+            url : `api/v1/element/property/${elementId}`,
             data : $("#temp").serialize(),
             success:function(data) {
               const serializedData = JSON.parse(JSON.stringify(jQuery('#temp').serializeArray()));
               const value = serializedData[0].value;
               let attributes = serializedData[1].value;
               let attval = serializedData[2].value;
-              attributes = attributes.includes(',') ? attributes.split(',') : [attributes];
-              attval = attval.includes(',') ? attval.split(',') : [attval];
+              attributes = attributes ? attributes.includes(',') ? attributes.split(',') : [attributes] : [];
+              attval = attval ? attval.includes(',') ? attval.split(',') : [attval] : [];
               templateId.removeChild(templateType);
               templateType = document.createElement(type); 
               templateType.appendChild(document.createTextNode(value)); 
