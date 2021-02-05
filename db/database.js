@@ -60,13 +60,20 @@ db.getElement = async(value) =>{
 
 db.updateElement = async(value) =>{
   try{
-    createClient();
-    const res = await companyPool.query(`UPDATE element set  value = $1, attribute = $2 where id = $3`,value);
-    return res;
+    if (companyPool) {
+      const res = await companyPool.query(`UPDATE element set  value = $1, attribute = $2 where id = $3`,value);
+      return res;
+    }
+    throw new Error('DB connection not initialized.');
   }catch(err){
     throw new Error(err)
   }
 } 
+
+db.end = async () => {
+  if (companyPool) return companyPool.end();
+  return false;
+};
                                               
 
 module.exports = db;

@@ -55,9 +55,8 @@ function dynamicForm(name,template){
     form.appendChild(br.cloneNode()); 
     attributeId.appendChild(form)
     $('#dynamicelement').on('click','#submit',function(){
-      formId ? formId.innerHTML = '' : '';
-     const formData = $("#dynamicelement").serialize();
-     $.ajax({
+    const formData = $("#dynamicelement").serialize();
+    $.ajax({
       type : 'POST',
       url : 'api/v1/element/property',
       data : formData,

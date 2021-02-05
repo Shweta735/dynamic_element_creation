@@ -4,26 +4,34 @@
 	<title>CodeClouds Assignment</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/index.js"></script>
 </head>
 <style>
 </style>
 <body style="text-align: center;" onload="dynamicForm('dynamic_element','template')"> 
-        <h1 style="color: green;"> 
+        <h1 style="color: green;padding-top: 20px;font-weight: bold;"> 
           Dynamic Form Assignment
         </h1> 
         <br>
-        <p id="dynamic_element"></p> 
-        <p id="template"></p> 
-        <p> 
-          Click on the button to change the attributes of the element
+        <p style="font-size: 20px;font-weight: bold"> 
+          Create dynamic element
         </p> 
+        <p id="dynamic_element"></p> 
+        <p id="template"></p>
+        <br> 
+        <p style="font-size: 20px;font-weight: bold;"> 
+          Click on the button below to change the attributes of the created element
+        </p> 
+        <br>
         <button onClick="updateDynamicElement('updateForm')"> 
             click here 
-        </button> 
+        </button>
+        <br> 
         <p id="updateForm"></p> 
+        <br> 
+        <div id="response"></div>
     </body> 
 </html>

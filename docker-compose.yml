@@ -10,7 +10,7 @@ services:
       - postgres
     environment:
       - NODE_ENV=development
-      - DB_SCHEMA= postgres
+      - DB_SCHEMA=postgres
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - DB_HOST=postgres
@@ -18,3 +18,4 @@ services:
       - '8000:8000'
     volumes:
       - .:/usr/src/dynamic-element
+      - /usr/src/dynamic-element/node_modules
