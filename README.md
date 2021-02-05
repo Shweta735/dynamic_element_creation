@@ -4,6 +4,16 @@ This is a dynamic element/form creation web application where you can provide th
 
 I have kept the front end quite simple. It does the basic job of taking input from the user and showing the output. For backend I have used express framework in nodejs and postgresql as the database
 
+Sample Data :
+
+Enter type of the element : input
+
+Enter value of the element : Let's create a dynamic element
+
+Provide attributes of the element separated by comma : type,name,size
+
+Provide attribute values of the element corresponding to the attribute separated by comma : text,dynamic,50
+
 ## Pull the docker image from docker hub
   
    Run below command to pull the docker image
