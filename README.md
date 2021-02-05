@@ -6,13 +6,13 @@ I have kept the front end quite simple. It does the basic job of taking input fr
 
 Sample Data :
 
-Enter type of the element : input
+#### Enter type of the element : input
 
-Enter value of the element : Let's create a dynamic element
+#### Enter value of the element : Let's create a dynamic element
 
-Provide attributes of the element separated by comma : type,name,size
+#### Provide attributes of the element separated by comma : type,name,size
 
-Provide attribute values of the element corresponding to the attribute separated by comma : text,dynamic,50
+#### Provide attribute values of the element corresponding to the attribute separated by comma : text,dynamic,50
 
 ## Pull the docker image from docker hub
   
