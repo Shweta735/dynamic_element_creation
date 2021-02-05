@@ -18,7 +18,7 @@ Provide attribute values of the element corresponding to the attribute separated
   
    Run below command to pull the docker image
   
-   ### docker pull shweta735/dynamic_element:latest
+   ### docker pull shweta735/dynamicelement:latest
 
 ## To run the application locally
 
