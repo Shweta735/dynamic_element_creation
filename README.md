@@ -48,4 +48,4 @@ Provide attribute values of the element corresponding to the attribute separated
  
    Can beautify the front end
    
-   Can add more validations and verifications
+   Can add more validations and verifications etc
