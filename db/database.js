@@ -5,11 +5,11 @@ let companyPool;
 
 const createClientPool = ()=>{
   companyPool = new Pool({
-      user: process.env.DB_USER || 'postgres',
-      host: process.env.DB_HOST || 'postgres',
-      database: process.env.DB_SCHEMA || 'postgres',
-      password: process.env.DB_PASSWORD || 'postgres',
-      port: "5432"
+      user: 'admin',
+      host: 'staging.cc1gjuj7ab1h.ca-central-1.rds.amazonaws.com',
+      database: 'pickup_order',
+      password: '*S3U^^BUG9LGwvgjn=g6',
+      port: "3306"
   });
 //   if(process.env.NODE_ENV === 'development'){
 //     companyPool = new Pool({
@@ -32,12 +32,12 @@ const createClientPool = ()=>{
 
 db.init = async () => {
   createClientPool();
-  try {
-    //initializing the db
-    await companyPool.query(`CREATE TABLE IF NOT EXISTS element(id SERIAL UNIQUE,type varchar(15),value varchar(50),attribute json)`);
-} catch (err) {
-    console.log(err.stack);
-}
+//   try {
+//     //initializing the db
+//     await companyPool.query(`CREATE TABLE IF NOT EXISTS element(id SERIAL UNIQUE,type varchar(15),value varchar(50),attribute json)`);
+// } catch (err) {
+//     console.log(err.stack);
+// }
 };
 
 db.insertElement = async(value) =>{
