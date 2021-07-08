@@ -4,23 +4,30 @@ const db = {};
 let companyPool;
 
 const createClientPool = ()=>{
-  if(process.env.NODE_ENV === 'development'){
-    companyPool = new Pool({
+  companyPool = new Pool({
       user: process.env.DB_USER || 'postgres',
       host: process.env.DB_HOST || 'postgres',
       database: process.env.DB_SCHEMA || 'postgres',
       password: process.env.DB_PASSWORD || 'postgres',
       port: "5432"
     });
-  } else {
-    companyPool = new Pool({
-      user: "qlsrssesdjutxw",
-      host: "ec2-52-204-232-46.compute-1.amazonaws.com",
-      database: "d92tole5gntqj",
-      password: '2c94d6e8f133076bb52a705c6b7796d090b755949420fae63cef473d9012f92d',
-      port: "5432"
-    });
-  }
+//   if(process.env.NODE_ENV === 'development'){
+//     companyPool = new Pool({
+//       user: process.env.DB_USER || 'postgres',
+//       host: process.env.DB_HOST || 'postgres',
+//       database: process.env.DB_SCHEMA || 'postgres',
+//       password: process.env.DB_PASSWORD || 'postgres',
+//       port: "5432"
+//     });
+//   } else {
+//     companyPool = new Pool({
+//       user: "qlsrssesdjutxw",
+//       host: "ec2-52-204-232-46.compute-1.amazonaws.com",
+//       database: "d92tole5gntqj",
+//       password: '2c94d6e8f133076bb52a705c6b7796d090b755949420fae63cef473d9012f92d',
+//       port: "5432"
+//     });
+//   }
 }
 
 db.init = async () => {
