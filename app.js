@@ -9,10 +9,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-app.set('views', `${__dirname}/public/views`);
-app.set('view engine', 'ejs');
+// app.set('views', `${__dirname}/public/views`);
+// app.set('view engine', 'ejs');
 
-app.use(express.static(`${__dirname}/public`));
+// app.use(express.static(`${__dirname}/public`));
 
 
 app.get('/', (req, res) => {
@@ -34,4 +34,4 @@ process.on('uncaughtException', (err) => {
   console.log(`Caught exception: ${err}`);
 });
 
-app.listen(process.env.PORT || 8000, ()=> console.log('connected'))
+app.listen(process.env.PORT || 5000, ()=> console.log('connected'))
