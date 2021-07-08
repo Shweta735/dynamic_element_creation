@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const elementRoutes = require('./route/elementroutes');
 const db = require('./db/database');
 const app = express();
-db.init();
+// db.init();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -29,6 +29,7 @@ app.use((req, res) => res.status(404).send('Not Found'));
 
 // Catch uncaught exceptions
 process.on('uncaughtException', (err) => {
+  console.log('jnj')
   db.end();
   console.log(`Caught exception: ${err}`);
 });
