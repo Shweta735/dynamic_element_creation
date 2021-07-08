@@ -10,7 +10,7 @@ const createClientPool = ()=>{
       database: process.env.DB_SCHEMA || 'postgres',
       password: process.env.DB_PASSWORD || 'postgres',
       port: "5432"
-    });
+  });
 //   if(process.env.NODE_ENV === 'development'){
 //     companyPool = new Pool({
 //       user: process.env.DB_USER || 'postgres',
