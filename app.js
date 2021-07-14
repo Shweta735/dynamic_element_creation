@@ -25,7 +25,7 @@ app.use(`${basePath}/element`,elementRoutes)
 
 
 // Handle User Generated 404 errors. ******** MUST BE THE LAST ROUTE *******
-app.use((req, res) => res.status(404).send('Not Found'));
+app.use((req, res) => res.status(404).send('Not Found mate'));
 
 // Catch uncaught exceptions
 process.on('uncaughtException', (err) => {
